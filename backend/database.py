@@ -200,6 +200,6 @@ if __name__ == "__main__":
          print("Нет ни одной задачи")
       else:
          for task in tasks:
-             print( "{:3} {:20} {}".format(
+             print( "{:3} {:35} {}".format(
                task["uid"], str(task["description"]),
                "Сделано" if task["is_completed"] else "Не сделано") )
