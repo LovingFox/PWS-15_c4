@@ -1,6 +1,8 @@
 <template>
   <div>
     <h2>Задачи базы данных {{ dbCurrent }}</h2>
+    <h5>Выполнено: {{ todosCountDone }}; Осталось: {{ todosCountNotDone }};
+      Всего: {{ this.todos.length }}</h5>
     <statusinfo
       :message="statusMessage"
       :variant="statusType"
@@ -324,6 +326,12 @@ export default {
     dbCurrent() { // в зависимости от типа базы данных возвращяем ее текстовое представление
       if (this.dbType === null) return '';
       return this.dbType ? this.dbRemote : this.dbLocal;
+    },
+    todosCountDone() {
+      return this.todos.filter((x) => (x.is_completed)).length;
+    },
+    todosCountNotDone() {
+      return this.todos.filter((x) => (!x.is_completed)).length;
     },
   },
 };
